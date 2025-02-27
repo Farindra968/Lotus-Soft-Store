@@ -1,3 +1,5 @@
+import { CATEGORY_ROUTE, LOGIN_ROUTE, PRODUCT_ROUTE } from "./routes";
+
 const navItems = [
     {
         label: 'Home',
@@ -5,15 +7,15 @@ const navItems = [
     },
     {
         label: 'Product',
-        path: '/',
+        path: PRODUCT_ROUTE,
     },
     {
-        label: 'Gift Ideas',
-        path: '/',
+        label: 'Categories',
+        path: CATEGORY_ROUTE,
     },
     {
-        label: "Today's Deals",
-        path: '/',
+        label: "Login",
+        path: LOGIN_ROUTE
     },
 ]
 export default navItems;

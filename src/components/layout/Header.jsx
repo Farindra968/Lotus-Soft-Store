@@ -24,7 +24,7 @@ const Header = () => {
   ];
 
   return (
-    <nav className="w-full fixed z-50 bg-white dark:bg-text-dark border-b  font-Poppins antialiased">
+    <nav className="w-full sticky top-0 z-50 bg-white dark:bg-text-dark border-b  font-Poppins antialiased">
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-8">

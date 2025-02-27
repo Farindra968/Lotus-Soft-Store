@@ -17,9 +17,7 @@ export default function RootLayout({ children }) {
       >
         <MainProvider>
         <Header/>
-          <main className="py-12">
           {children}
-          </main>
         </MainProvider>
 
       </body>

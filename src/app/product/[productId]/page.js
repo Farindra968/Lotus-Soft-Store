@@ -1,4 +1,4 @@
-import AddToCart from "@/components/product/AddToCart";
+import {AddToCart} from "@/components/product/AddToCart";
 import ImageViewer from "@/components/product/ImageViewer";
 import { CATEGORY_ROUTE } from "@/constant/routes";
 import { getProductByID } from "@/services/api/productApi";
