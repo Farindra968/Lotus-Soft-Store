@@ -1,5 +1,5 @@
+import AddToCart from "@/components/product/AddToCart";
 import ImageViewer from "@/components/product/ImageViewer";
-import SingleProduct from "@/components/product/SingleProduct";
 import { CATEGORY_ROUTE } from "@/constant/routes";
 import { getProductByID } from "@/services/api/productApi";
 import Image from "next/image";
@@ -94,10 +94,7 @@ const ProductDetails = async ({ params }) => {
           </div>
           {/* Cart Buttom */}
           <div className="flex justify-start items-center gap-4">
-            <button className=" bg-primary-700 hover:bg-primary-800 text-white font-semibold py-3 px-4 rounded-lg flex items-center justify-center transition-colors duration-300">
-              <FaShoppingCart className="mr-2 h-5 w-5" />
-              Add to Cart
-            </button>
+            <AddToCart product={product} />
             <button className=" border-2 border-text-muted rounded-lg flex justify-center items-center p-3 dark:text-gray-200 hover:dark:text-text-default hover:bg-gray-200">
               <FaRegHeart />
             </button>

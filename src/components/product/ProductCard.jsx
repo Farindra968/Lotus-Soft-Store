@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { FaStar, FaHeart, FaTruck, FaWallet, FaRegStar } from "react-icons/fa";
+import AddToCart from "./AddToCart";
 
 const ProductCard = ({ product }) => {
     const renderStars = (rating) => {
@@ -85,12 +86,7 @@ const ProductCard = ({ product }) => {
           <p className="text-2xl font-Poppins-Semibold leading-tight text-gray-900 dark:text-white">
             ${offerPrice}
           </p>
-          <button
-            type="button"
-            className="inline-flex items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-Poppins-Medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-          >
-            Add to cart
-          </button>
+          <AddToCart product={product} />
         </div>
       </div>
     </div>
