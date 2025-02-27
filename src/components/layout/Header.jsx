@@ -24,7 +24,7 @@ const Header = () => {
   ];
 
   return (
-    <nav className="bg-white dark:bg-text-dark border-b  font-Poppins antialiased">
+    <nav className="w-full fixed z-50 bg-white dark:bg-text-dark border-b  font-Poppins antialiased">
       <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-8">
@@ -47,7 +47,7 @@ const Header = () => {
               ))}
             </ul>
           </div>
-          <div className="flex items-center lg:space-x-2 relative">
+          <div className="flex items-center lg:space-x-2 w-auto">
             <button
               onClick={() => setShowCart(!showCart)}
               className="w-10 h-10 rounded-md hover:bg-gray-300 text-2xl"
@@ -58,7 +58,7 @@ const Header = () => {
               id=""
               className={`${
                 showCart
-                  ? "absolute top-14 -right-8 w-80  z-10 mx-auto  space-y-4 overflow-hidden bg-white p-6 antialiased shadow-lg dark:bg-gray-800"
+                  ? "fixed top-14 right-0 w-1/3  z-10 mx-auto  space-y-4 overflow-hidden bg-white p-6 antialiased shadow-lg dark:bg-gray-800"
                   : "hidden"
               }`}
             >
