@@ -1,8 +1,7 @@
 import Header from "@/components/layout/Header";
 import "./globals.css"
 import config from "@/config/config";
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
+import MainProvider from "@/redux/MainProvider";
 
 
 export const metadata = {
@@ -16,10 +15,10 @@ export default function RootLayout({ children }) {
       <body
         className={` antialiased`}
       >
-        <Provider store={store}>
+        <MainProvider>
         <Header/>
           {children}
-        </Provider>
+        </MainProvider>
 
       </body>
     </html>
