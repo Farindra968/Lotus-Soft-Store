@@ -17,6 +17,7 @@ const page = async () => {
             <CategoriesCard key={category.id} category={category} />
           ))}
         </section>
+        
       </section>
   );
 };

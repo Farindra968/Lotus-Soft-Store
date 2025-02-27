@@ -2,7 +2,7 @@ import CategoriesCard from "@/components/product/CategoriesCard";
 import ProductCard from "@/components/product/ProductCard";
 import SecondaryHeading from "@/components/ui/SecondaryHeading";
 import { CATEGORY_ROUTE, PRODUCT_ROUTE } from "@/constant/routes";
-import { postLogin } from "@/services/api/authApi";
+import { getUser,  } from "@/services/api/authApi";
 import { getAllCategories, getProduct } from "@/services/api/productApi";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,8 +10,8 @@ import Link from "next/link";
 const Home = async () => {
   const categoriesData = await getAllCategories(); /// categories
   const productData = await getProduct(); /// product
-  console.log(categoriesData, productData);
-  console.log(postLogin())
+  const user = await getUser();
+  console.log(categoriesData, productData, user);
 
   return (
     <section className="max-w-screen-xl mx-auto py-6 px-4">

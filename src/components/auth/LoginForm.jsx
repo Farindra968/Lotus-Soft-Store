@@ -1,9 +1,11 @@
 "use client";
 
+import {  postLogin } from "@/services/api/authApi";
 import Link from "next/link";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { IoMdEye, IoMdEyeOff } from "react-icons/io";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const LoginForm = () => {
@@ -13,9 +15,19 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm();
 
-  const submit = (data) => {
-      postLogin(data);
-      console.log(data)
+  const submit = async (data) => {
+    try {
+      const { username, password } = data; // Extract username and password
+      const response = await postLogin(username, password)
+      const respnse = localStorage.setItem("apiToken", response.token)
+
+      toast.success('Login Sucessfully')
+      console.log(response, 'Login Sucessfully')
+
+    } catch (error) {
+      toast.error(error.response?.data)
+      
+    }
       
     };
     const [showPassword, setShowPassword]=useState()
@@ -71,6 +83,8 @@ const LoginForm = () => {
           </form>
         </div>
       </div>
+      <ToastContainer />
+
     </div>
   );
 };

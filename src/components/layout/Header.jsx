@@ -8,6 +8,7 @@ import logo from "@/assets/images/logo.png";
 import navItems from "@/constant/navItems";
 import { MdAccountCircle, MdMenu, MdShoppingCart } from "react-icons/md";
 import MiniCart from "@/components/product/MiniCart";
+import { ADD_PRODUCT_ROUTE, CATEGORY_ROUTE, LOGIN_ROUTE, PRODUCT_ROUTE } from "@/constant/routes";
 
 const Header = () => {
   const [showCart, setShowCart] = useState();
@@ -15,11 +16,11 @@ const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState();
   const profileMenu = [
     { name: "My Account", link: "#" },
-    { name: "My Orders", link: "#" },
-    { name: "Settings", link: "#" },
+    { name: "Add Product", link: ADD_PRODUCT_ROUTE },
+    { name: "Product", link: PRODUCT_ROUTE },
+    { name: "Product Categories", link: CATEGORY_ROUTE },
     { name: "Favourites", link: "#" },
-    { name: "Delivery Addresses", link: "#" },
-    { name: "Billing Data", link: "#" },
+    { name: "Login", link: LOGIN_ROUTE },
   ];
 
   return (

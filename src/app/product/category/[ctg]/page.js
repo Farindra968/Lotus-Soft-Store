@@ -9,10 +9,6 @@ const page = async ({params}) => {
 
     console.log(productData, category);
   return (
-    <section className="max-w-screen-xl mx-auto py-6 px-4">
-    <div className="border-b border-primary-300 uppercase pb-2">
-      <PrimaryHeading title={category} />
-    </div>
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 py-6">
       {
         productData?.map((product) => (
@@ -20,7 +16,6 @@ const page = async ({params}) => {
         ))
       }
 
-    </section>
   </section>
   )
 }
