@@ -24,7 +24,7 @@ const ProductForm = () => {
     }
   };
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white">
       <div className="py-8 px-4 mx-auto lg:py-16">
         <h2 className="mb-4 text-xl font-Poppins-Semibold text-gray-900 dark:text-white">
           Add Product

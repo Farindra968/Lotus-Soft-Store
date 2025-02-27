@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
   
     
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+    <div className="rounded-lg bg-white border border-gray-200  p-6 shadow-sm ">
       <div className="h-52 w-full relative">
         <Image
           src={product.image}
@@ -59,7 +59,7 @@ const ProductCard = ({ product }) => {
           </Link>
         </div>
         <Link href={`${PRODUCT_ROUTE}/${product.id}`}>
-          <h1 className="text-lg h-10 overflow-hidden text-ellipsis font-Poppins-Medium leading-tight text-gray-900 hover:underline dark:text-white">
+          <h1 className="text-lg h-10 overflow-hidden text-ellipsis font-Poppins-Medium leading-tight text-gray-900 hover:underline">
             {product.title}
           </h1>
         </Link>
@@ -83,7 +83,7 @@ const ProductCard = ({ product }) => {
           </li>
         </ul>
         <div className="mt-4 flex items-center justify-between gap-4">
-          <p className="text-2xl font-Poppins-Semibold leading-tight text-gray-900 dark:text-white">
+          <p className="text-2xl font-Poppins-Semibold leading-tight text-gray-900">
             ${offerPrice}
           </p>
           <AddToCart2 product={product} />

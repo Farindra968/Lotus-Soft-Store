@@ -31,7 +31,7 @@ const ProductDetails = async ({ params }) => {
     const discountOffer = ((product.price - offerPrice) / product.price) * 100;
 
   return (
-    <section className="max-w-screen-xl m-auto h-auto bg-white dark:bg-transparent">
+    <section className="max-w-screen-xl m-auto h-auto bg-white ">
       <div className="flex flex-col lg:flex-row justify-center items-center py-6">
         {/* 1st cols [Product Image] */}
         <div className="w-[80%] h-auto p-6 relative">
@@ -49,22 +49,22 @@ const ProductDetails = async ({ params }) => {
             <div className="flex items-center">
               {renderStars(product.rating?.rate || 0)}
             </div>
-            <p className="text-sm font-Poppins-Medium text-gray-900 dark:text-white">
+            <p className="text-sm font-Poppins-Medium text-gray-900">
               {product.rating?.rate.toFixed(1)}
             </p>
             <p className="text-sm font-Poppins-Medium text-gray-500 dark:text-gray-400">
               ({product.rating?.count})
             </p>
           </div>
-          <h1 className="text-xl capitalize sm:text-2xl md:text-3xl text-primary-800 dark:text-text-light-200 font-Poppins-Bold">
+          <h1 className="text-xl capitalize sm:text-2xl md:text-3xl text-primary-800  font-Poppins-Bold">
             {product.title}
           </h1>
 
           {/* Categories, Brand, SKU  */}
-          <div className="py-4 grid grid-cols-1 sm:grid-cols-2 border-b-2 border-gray-200 dark:border-gray-700 ">
-            <p className=" font-Poppins-Medium  text-text-secondary dark:text-gray-200">
+          <div className="py-4 grid grid-cols-1 sm:grid-cols-2 border-b-2 border-gray-200  ">
+            <p className=" font-Poppins-Medium  text-text-secondary ">
               Categories:{" "}
-              <Link href={`${CATEGORY_ROUTE}/${product.category}`} className="text-text-dark dark:text-text-light font-Poppins-Semibold uppercase ">
+              <Link href={`${CATEGORY_ROUTE}/${product.category}`} className="text-text-dark  font-Poppins-Semibold uppercase ">
                 {product.category || "No Category"}
               </Link>
             </p>
@@ -72,10 +72,10 @@ const ProductDetails = async ({ params }) => {
           {/* Short Description */}
           <div className="py-4">
             <div>
-              <p className="text-text-dark dark:text-gray-300  font-Poppins-Medium">
+              <p className="text-text-dark font-Poppins-Medium">
                 Description:
               </p>
-              <p className="text-sm font-Poppins text-text-muted dark:text-gray-200 py-2">
+              <p className="text-sm font-Poppins text-text-muted  py-2">
                 {product.description}
               </p>
             </div>

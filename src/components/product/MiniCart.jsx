@@ -1,4 +1,5 @@
 'use client'
+import { PRODUCT_CART_ROUTE } from "@/constant/routes";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -17,7 +18,7 @@ const MiniCart = () => {
 
 
   return (
-    <div className="w-full ">
+    <div className="w-full bg-white ">
       
       <h2 className="text-lg font-Poppins-Semibold pb-4 text-gray-800 flex items-center">Your Cart</h2>
       <div className="h-72 overflow-y-scroll pr-3">
@@ -66,7 +67,7 @@ const MiniCart = () => {
 
 
 
-      <div className="py-2 border-t border-gray-100">
+      <div className="py-4 border-t border-gray-100">
       <div className="flex justify-between items-center">
           <span className="font-Poppins text-gray-700">Subtotal</span>
           <span className="font-Poppins-Medium text-gray-900">${subTotal}</span>
@@ -81,9 +82,9 @@ const MiniCart = () => {
           <span className="font-Poppins-Semibold text-gray-900">${subTotal - discountOffer}</span>
         </div>
         <div className="mt-4">
-          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors">
+          <Link href={`${PRODUCT_CART_ROUTE}`} className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors">
             Checkout
-          </button>
+          </Link>
         </div>
       </div>
     </div>

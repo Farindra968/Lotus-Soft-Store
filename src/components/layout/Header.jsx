@@ -16,17 +16,17 @@ const Header = () => {
   const [showMobileMenu, setShowMobileMenu] = useState();
   const profileMenu = [
     { name: "My Account", link: "#" },
-    { name: "Add Product", link: ADD_PRODUCT_ROUTE },
-    { name: "Product", link: PRODUCT_ROUTE },
-    { name: "Product Categories", link: CATEGORY_ROUTE },
+    { name: "Add Product", link: `/${ADD_PRODUCT_ROUTE}` },
+    { name: "Product", link: `/${PRODUCT_ROUTE}` },
+    { name: "Product Categories", link: `/${CATEGORY_ROUTE}` },
     { name: "Favourites", link: "#" },
-    { name: "Login", link: LOGIN_ROUTE },
+    { name: "Login", link: `/${LOGIN_ROUTE}` },
   ];
 
   return (
-    <nav className="w-full sticky top-0 z-50 bg-white dark:bg-text-dark border-b  font-Poppins antialiased">
-      <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0 py-4">
-        <div className="flex items-center justify-between">
+    <nav className="w-full sticky top-0 z-50 bg-white  border-b  font-Poppins antialiased ">
+      <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0 py-4 ">
+        <div className="flex items-center justify-between relative">
           <div className="flex items-center space-x-8">
             <div className="shrink-0">
               <Link href="/">
@@ -39,7 +39,7 @@ const Header = () => {
                   <Link
                     href={item.path}
                     title
-                    className="flex text-sm font-medium text-gray-900 hover:text-primary-700 dark:text-white dark:hover:text-primary-500"
+                    className="flex text-sm font-medium text-gray-900 hover:text-primary-700"
                   >
                     {item.label}
                   </Link>
@@ -50,7 +50,7 @@ const Header = () => {
           <div className="flex items-center lg:space-x-2 w-auto">
             <button
               onClick={() => setShowCart(!showCart)}
-              className="w-10 h-10 rounded-md hover:bg-gray-300 text-2xl"
+              className="hidden md:block w-10 h-10 rounded-md hover:bg-gray-300 text-2xl"
             >
               <MdShoppingCart className="mx-auto" />
             </button>
@@ -58,7 +58,7 @@ const Header = () => {
               id=""
               className={`${
                 showCart
-                  ? "fixed top-14 right-0 w-1/3  z-10 mx-auto  space-y-4 overflow-hidden bg-white p-6 antialiased shadow-lg dark:bg-gray-800"
+                  ? "absolute top-14 -right-6 w-1/3  z-10 mx-auto  space-y-4 overflow-hidden bg-white p-6 antialiased shadow-lg"
                   : "hidden"
               }`}
             >
@@ -73,24 +73,24 @@ const Header = () => {
             <div
               className={`${
                 showProfile
-                  ? " absolute top-14 -right-2 z-10 w-56 divide-y divide-gray-100 overflow-hidden overflow-y-auto rounded-lg bg-white antialiased shadow dark:divide-gray-600 dark:bg-gray-700"
+                  ? " absolute top-14 -right-2 z-10 w-56 divide-y divide-gray-100 overflow-hidden overflow-y-auto rounded-lg bg-white antialiased shadow "
                   : "hidden"
               }`}
             >
-              <ul className="p-2 text-start text-sm font-medium text-gray-900 dark:text-white">
+              <ul className="p-2 text-start text-sm font-medium text-gray-900 ">
                 {profileMenu.map((menu, index) => (
                   <li key={index}>
                     <Link
                       href={`${menu.link}`}
                       title
-                      className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-600"
+                      className="inline-flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm"
                     >
                       {menu.name}
                     </Link>
                   </li>
                 ))}
               </ul>
-              <div className="p-2 text-sm font-medium text-gray-900 dark:text-white">
+              <div className="p-2 text-sm font-medium text-gray-900 ">
                 <a
                   href="#"
                   title
