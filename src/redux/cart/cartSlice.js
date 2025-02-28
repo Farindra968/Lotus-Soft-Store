@@ -44,9 +44,32 @@ const cartSlice = createSlice({
         return total;
       }, 0);
     },
+    increaseQuantity: (state, action) => {
+      const product = action.payload;
+      
+      state.product = state.product.map((item) => {
+        if (item.id === product.id) {
+          return {...item, quantity: item.quantity +1}
+        }
+        return item;
+      })
+
+      state.totalprice = state.totalprice + product.price;
+    },
+    decreaseQuantity: (state, action) => {
+      const product = action.payload;
+
+      state.product = state.product.map((item) => {
+        if (item.id === product.id) {
+          return { ...item, quantity: item.quantity - 1 }
+        };
+        return item;
+      });
+      state.totalprice = state.totalprice - product.price;
+    }
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, increaseQuantity, decreaseQuantity } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -9,6 +9,8 @@ import navItems from "@/constant/navItems";
 import { MdAccountCircle, MdMenu, MdShoppingCart } from "react-icons/md";
 import MiniCart from "@/components/product/MiniCart";
 import { ADD_PRODUCT_ROUTE, CATEGORY_ROUTE, LOGIN_ROUTE, PRODUCT_ROUTE } from "@/constant/routes";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "@/redux/cart/cartSlice";
 
 const Header = () => {
   const [showCart, setShowCart] = useState();
@@ -53,6 +55,7 @@ const Header = () => {
               className="hidden md:block w-10 h-10 rounded-md hover:bg-gray-300 text-2xl"
             >
               <MdShoppingCart className="mx-auto" />
+              <p className="text-sm bg-primary-600 flex items-center justify-center rounded-full text-white w-6 h-6"></p>
             </button>
             <div
               id=""

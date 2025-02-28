@@ -1,5 +1,6 @@
 'use client'
 import { PRODUCT_CART_ROUTE } from "@/constant/routes";
+import { decreaseQuantity, increaseQuantity } from "@/redux/cart/cartSlice";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -8,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const MiniCart = () => {
   const { product, totalprice } = useSelector((state) => state.cart);
-
+  const dispatch = useDispatch();
 
   // Subtotal
   const subTotal = Math.floor(totalprice)
@@ -47,16 +48,16 @@ const MiniCart = () => {
       
                   <div className="mt-3 flex items-center justify-between">
                     <div className="flex items-center border rounded-md border-gray-200 overflow-hidden">
-                      <button className="px-2 py-1 text-gray-600 hover:bg-gray-50 transition-colors" aria-label="Decrease quantity">
+                      <button onClick={()=>dispatch(decreaseQuantity(product))} className="px-2 py-1 text-gray-600 hover:bg-gray-50 transition-colors" aria-label="Decrease quantity">
                         <FaMinus className="w-3.5 h-3.5" />
                       </button>
                   <span className="px-3 py-1 text-gray-800 font-medium text-sm min-w-[30px] text-center">{product.quantity}</span>
-                      <button className="px-2 py-1 text-gray-600 hover:bg-gray-50 transition-colors" aria-label="Increase quantity">
+                      <button onClick={()=>dispatch(increaseQuantity(product))} className="px-2 py-1 text-gray-600 hover:bg-gray-50 transition-colors" aria-label="Increase quantity">
                         <FaPlus className="w-3.5 h-3.5" />
                       </button>
                     </div>
                     <div className="text-right">
-                      <p className="font-medium text-gray-900">${Math.floor(product.price)}</p>
+                      <p className="font-medium text-gray-900">${Math.floor(product.price*product.quantity)}</p>
                     </div>
                   </div>
                 </div>

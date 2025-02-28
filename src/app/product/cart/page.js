@@ -1,6 +1,7 @@
 "use client";
 
 import { CATEGORY_ROUTE, PRODUCT_ROUTE } from "@/constant/routes";
+import { decreaseQuantity, increaseQuantity } from "@/redux/cart/cartSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -14,7 +15,6 @@ import {
   FaTags,
   FaArrowLeft,
 } from "react-icons/fa";
-import { TbArrowLeftFromArc } from "react-icons/tb";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function ProductCart() {
@@ -22,23 +22,24 @@ export default function ProductCart() {
   const dispatch = useDispatch();
 
 
+
   // Subtotal
-  const subTotal = (totalprice)
+  const subTotal = Math.floor(totalprice)
   //Discount
   const discountOffer = (totalprice - totalprice * 0.9).toFixed(2);
 
 
   return (
-    <div className=" min-h-screen py-8">
+    <div className=" min-h-screen py-">
       <div className="container mx-auto px-">
         <h1 className="text-2xl font-Poppins-Semibold text-gray-800 mb-8">
           Your Shopping Cart
         </h1>
 
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-6">
           {/* Cart Items - First Column */}
           <div className="w-full md:w-2/3">
-            <div className=" rounded-md text-nowrap overflow-x-scroll lg:overflow-x-hidden shadow  p-6 mb-4">
+            <div className=" rounded-md text-nowrap overflow-x-scroll lg:overflow-x-hidden   p-6 mb-4">
               <table className="w-full ">
                 <thead>
                   <tr className="border-b font-Poppins">
@@ -49,10 +50,10 @@ export default function ProductCart() {
                       Product
                     </th>
                     <th className="text-center py-4 px-2 font-medium text-sm text-gray-600">
-                      Quantity
+                      Price
                     </th>
                     <th className="text-right py-4 px-2 font-medium text-sm text-gray-600">
-                      Price
+                    Quantity
                     </th>
                     <th className="text-right py-4 px-2 font-medium text-sm text-gray-600">
                       Total
@@ -79,23 +80,24 @@ export default function ProductCart() {
                         </div>
                       </td>
                       <td className="py-4 px-2">
+                      <span className="text-gray-700">${Math.floor(items.price)}</span>
+                      </td>
+                      <td className="py-4 px-2 text-right font-Poppins-Semibold">
+
                         <div className="flex items-center justify-center">
                           <button className="text-gray-800 focus:outline-none focus:text-gray-600">
-                            <FaMinus className="h-3 w-3" />
+                            <FaMinus onClick={()=> dispatch(decreaseQuantity(items))} className="h-3 w-3" />
                           </button>
-                          <span className="text-gray-800 flex items-center justify-center w-10 h-10 border-2 bg-gray-100 rounded-md p-2 font-Poppins-Medium mx-2">
+                          <span  className="text-gray-800 flex items-center justify-center w-10 h-10 border-2 bg-gray-100 rounded-md p-2 font-Poppins-Medium mx-2">
                             {items.quantity}
                           </span>
-                          <button className="text-gray-800 focus:outline-none focus:text-gray-600">
+                          <button onClick={()=>dispatch(increaseQuantity(items))} className="text-gray-800 focus:outline-none focus:text-gray-600">
                             <FaPlus className="h-3 w-3" />
                           </button>
                         </div>
                       </td>
                       <td className="py-4 px-2 text-right font-Poppins-Semibold">
-                        <span className="text-gray-700">${items.price}</span>
-                      </td>
-                      <td className="py-4 px-2 text-right font-Poppins-Semibold">
-                        <span className="text-gray-700">${items.price * items.quantity}</span>
+                        <span className="text-gray-700">${Math.floor(items.price * items.quantity)}</span>
                       </td>
                       <td className="py-4 px-2 text-right font-Poppins-Semibold">
                         <button className="text-red-500 hover:text-red-600 focus:outline-none">
@@ -109,13 +111,12 @@ export default function ProductCart() {
             </div>
 
             <div className="font-Poppins flex justify-between items-center mt-6">
-              <a
-                href="#"
+              <Link href={`${PRODUCT_ROUTE}`}
                 className="text-indigo-600 hover:text-indigo-500 flex items-center"
               >
                 <FaArrowLeft />
                 <span>Continue Shopping</span>
-              </a>
+              </Link>
               <button className="bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-500 transition-colors">
                 Update Cart
               </button>
@@ -123,8 +124,8 @@ export default function ProductCart() {
           </div>
 
           {/* Cart Summary - Second Column */}
-          <div className="md:w-1/3">
-            <div className="bg-white rounded-lg shadow-md p-6 mb-4">
+          <div className="md:w-1/3  ">
+            <div className=" sticky top-[118px]  px-6 py-4 mb-4">
               <h2 className="text-lg font-Poppins-Semibold text-gray-800 mb-4">
                 Order Summary
               </h2>
@@ -187,16 +188,15 @@ export default function ProductCart() {
                     </div>
                   </div>
                 </div>
+
               </div>
 
               <button className="w-full bg-indigo-600 font-Poppins text-white py-3 px-4 rounded-lg hover:bg-indigo-500 transition-colors flex items-center justify-center">
                 <FaCreditCard className="mr-2" />
                 Proceed to Checkout
               </button>
-            </div>
-
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <h2 className="text-sm font-medium text-gray-700 mb-3">
+              <div className="py-6">
+              <h2 className="text-sm font-Poppins text-gray-700 mb-3">
                 We Accept
               </h2>
               <div className="flex justify-center items-center space-x-4">
@@ -208,6 +208,8 @@ export default function ProductCart() {
                 <div className="h-8 w-12 bg-yellow-500 rounded"></div>
               </div>
             </div>
+            </div>
+
           </div>
         </div>
       </div>
